@@ -29,7 +29,7 @@ public class SharedPrefDataStore<T> extends DataStore<T,String> {
     @Override
     public boolean isItemValid(String key) {
         long lastReadTime = Preferences.getInstance(context).lastReadTime(key);
-        long time2Compare = System.currentTimeMillis() + lastReadTime;
+        long time2Compare = System.currentTimeMillis();
         return time2Compare < (lastReadTime + maxAge);
     }
 }

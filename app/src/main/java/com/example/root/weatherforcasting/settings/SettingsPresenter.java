@@ -30,6 +30,7 @@ public class SettingsPresenter implements SettingsContractor.Presenter {
 
     @Override
     public void saveChosenCity(City chosenCity) {
+        Preferences.getInstance(view.getContext()).clearCach();
         Preferences.getInstance(view.getContext()).saveItem(chosenCity, City.class, Preferences.CHOSEN_CITY);
         view.goToMainPage();
     }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.root.weatherforcasting.R;
 import com.example.root.weatherforcasting.daily.DailyAcitivity;
+import com.example.root.weatherforcasting.data.Preferences;
 import com.example.root.weatherforcasting.databinding.ActivitySettingsBinding;
 import com.example.root.weatherforcasting.factories.PresentersFactory;
 import com.example.root.weatherforcasting.models.api_models.City;

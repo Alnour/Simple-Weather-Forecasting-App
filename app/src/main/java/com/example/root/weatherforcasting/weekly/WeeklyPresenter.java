@@ -44,7 +44,7 @@ public class WeeklyPresenter implements WeeklyContractor.Presenter {
         });
         dataStoreList.add(sharedPrefDataStore);
         dataStoreList.add(networkDataStore);
-        keys.add("CITY");
+        keys.add("Country");
         keys.add(RetrofitCaller.getMainAPIs().getWeeklyResponse(chosenCity.getId()+""));
 
     }

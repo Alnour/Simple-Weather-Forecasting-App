@@ -1,6 +1,8 @@
 package com.example.root.weatherforcasting.weekly;
 
 import android.content.Context;
+import android.icu.util.Calendar;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import com.example.root.weatherforcasting.databinding.WeeklyItemBinding;
 import com.example.root.weatherforcasting.models.api_models.List;
 import com.example.root.weatherforcasting.utils.PhotoLoader;
+import com.example.root.weatherforcasting.utils.TimeUtil;
 
 /**
  * Created by root on 24/06/17.
@@ -32,7 +35,7 @@ class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(WeeklyAdapter.ViewHolder holder, int position) {
-        holder.bind(items.get(position));
+        holder.bind(items.get(position), position);
     }
 
     @Override
@@ -47,14 +50,25 @@ class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.ViewHolder>{
             super(itemBinding.getRoot());
             this.weeklyItemBinding = itemBinding;
         }
-        public void bind(List dayItem){
+        public void bind(List dayItem, int pos){
             weeklyItemBinding.evening.setText("Evening: " + dayItem.getTemp().getEve()+ "°");
             weeklyItemBinding.morning.setText("Morning: " + dayItem.getTemp().getMorn() + "°");
             weeklyItemBinding.temp.setText(dayItem.getTemp().getDay() + "°");
             weeklyItemBinding.maxMin.setText(dayItem.getTemp().getMin()+"°/" +
             dayItem.getTemp().getMax() + "°");
-            weeklyItemBinding.executePendingBindings();
+            weeklyItemBinding.dayOfWeek.setText(getDay(dayItem, pos));
             PhotoLoader.loadIcon(weeklyItemBinding.icon, dayItem.getWeather().get(0).getIcon());
+            weeklyItemBinding.executePendingBindings();
+
         }
+    }
+
+    @NonNull
+    private String getDay(List dayItem, int pos) {
+        return TimeUtil.dayStringFormat(dayItem.getDt() + pos * ONE_DAY());
+    }
+
+    private int ONE_DAY() {
+        return 1000 * 60 * 60 * 24;
     }
 }

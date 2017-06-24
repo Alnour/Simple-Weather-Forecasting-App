@@ -53,6 +53,10 @@ public class Preferences {
     }
 
     public  long lastReadTime(String key){
-        return preferences.sharedPreferences.getInt(key + LAST_READ_TIME, 0);
+        return preferences.sharedPreferences.getLong(key + LAST_READ_TIME, 0);
+    }
+
+    public void clearCach(){
+        sharedPreferences.edit().clear().apply();
     }
 }

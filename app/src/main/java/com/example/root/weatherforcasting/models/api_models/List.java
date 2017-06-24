@@ -4,7 +4,7 @@ package com.example.root.weatherforcasting.models.api_models;
 
 public class List {
 
-    private Integer dt;
+    private long dt;
     private Temp temp;
     private Double pressure;
     private Integer humidity;
@@ -14,7 +14,7 @@ public class List {
     private Integer clouds;
     private Double rain;
 
-    public Integer getDt() {
+    public long getDt() {
         return dt;
     }
 

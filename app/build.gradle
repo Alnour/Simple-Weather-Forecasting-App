@@ -43,8 +43,6 @@ dependencies {
     //JSON parsing
     compile 'com.google.code.gson:gson:2.8.0'
 
-    //for rounded image view
-    compile 'de.hdodenhof:circleimageview:2.1.0'
 
     //assets helper
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
